@@ -1,56 +1,43 @@
-// ecsx is a set of what I consider to be essential utilities for working with
-// Amazon's Elastic Container Service.
+// cfx is a set of tools that I use to work with cloudformation, particularly
+// in a CI environment.
 //
-// Included currently are four commands: survey, update-service-environment,
-// update-service-image, and scale-service. If you've worked with ECS, these
-// should be pretty self explanatory with the exception of survey. It will
-// iterate through any available ECS clusters, printing some information about
-// each service, its containers, their configurations, and any load balancers
-// connected.
+// Included currently are three commands: `show-parameters`, `update-parameters`,
+// and `settle`. `show-parameters` and `update-parameters` do exactly what they
+// sound like they do. `settle` will follow the events of a stack until the stack
+// "settles" with a `_COMPLETE` or `_FAILED` event. In the event that it settles
+// in a `FAILED` state, a non-zero exit code will be returned. This makes it
+// suitable for use in a CI environment.
 //
-// Usage
+//   usage: cfx [<flags>] <command> [<args> ...]
 //
-// See "ecsx --help-long" for the most up-to-date version of this.
-//
-//   usage: ecsx [<flags>] <command> [<args> ...]
-//
-//   Amazon ECS easy mode
+//   Cloudformation Toolkit
 //
 //   Flags:
-//     --help                  Show context-sensitive help (also try --help-long and --help-man).
-//     --aws-timeout=1m        Timeout for applying changes.
-//     --aws-poll-interval=5s  Interval at which to poll AWS during changes.
+//     --help  Show context-sensitive help (also try --help-long and --help-man).
 //
 //   Commands:
 //     help [<command>...]
 //       Show help.
 //
-//     survey
-//       Survey ECS resources and display a summary.
+//     show-parameters --stack-name=STACK-NAME
+//       Show parameters for a stack.
 //
-//     update-service-environment --cluster=CLUSTER --service=SERVICE --container=CONTAINER [<flags>]
-//       Update environment variable(s) for a service.
+//       --stack-name=STACK-NAME  Name of the stack.
 //
-//       --cluster=CLUSTER        ECS cluster name
-//       --service=SERVICE        ECS service name
-//       --container=CONTAINER    ECS task container
-//       --variable=VARIABLE ...  Environment variable to change in KEY=VALUE form
+//     update-parameters --stack-name=STACK-NAME [<flags>]
+//       Update parameters for a stack.
 //
-//     update-service-image --cluster=CLUSTER --service=SERVICE --container=CONTAINER --image=IMAGE --tag=TAG
-//       Update Docker image in use for a service.
+//       --stack-name=STACK-NAME    Name of the stack.
+//       --capabilities=CAPABILITIES ...
+//                                  Capabilities required to perform changes.
+//       --parameter=PARAMETER ...  Parameters to change.
 //
-//       --cluster=CLUSTER      ECS cluster name
-//       --service=SERVICE      ECS service name
-//       --container=CONTAINER  ECS task container
-//       --image=IMAGE          Docker image URL
-//       --tag=TAG              Docker image tag
+//     settle --stack-name=STACK-NAME [<flags>]
+//       Wait for a stack to settle, tailing events.
 //
-//     scale-service --cluster=CLUSTER --service=SERVICE --count=COUNT
-//       Scale an ECS service to a specific number.
-//
-//       --cluster=CLUSTER  ECS cluster name
-//       --service=SERVICE  ECS service name
-//       --count=COUNT      Desired number of instances
+//       --stack-name=STACK-NAME  Name of the stack.
+//       --timeout=10m            Maximum time to wait until the stack is considered settled.
+//       --poll-interval=5s       Interval at which to poll AWS for events
 //
 // License
 //

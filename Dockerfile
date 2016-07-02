@@ -1,12 +1,12 @@
 FROM golang:1.6
 
-RUN mkdir -p /go/src/fknsrs.biz/p/ecsx
+RUN mkdir -p /go/src/fknsrs.biz/p/cfx
 
-WORKDIR /go/src/fknsrs.biz/p/ecsx
+WORKDIR /go/src/fknsrs.biz/p/cfx
 
 ADD vendor vendor/
 ADD *.go ./
 
 RUN go install
 
-ENTRYPOINT /go/bin/ecsx
+ENTRYPOINT ["/go/bin/cfx"]

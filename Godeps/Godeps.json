@@ -1,5 +1,5 @@
 {
-	"ImportPath": "fknsrs.biz/p/ecsx",
+	"ImportPath": "fknsrs.biz/p/cfx",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v62",
 	"Packages": [
@@ -94,16 +94,6 @@
 			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
 		},
 		{
-			"ImportPath": "github.com/aws/aws-sdk-go/private/protocol/json/jsonutil",
-			"Comment": "v1.2.0",
-			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
-		},
-		{
-			"ImportPath": "github.com/aws/aws-sdk-go/private/protocol/jsonrpc",
-			"Comment": "v1.2.0",
-			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
-		},
-		{
 			"ImportPath": "github.com/aws/aws-sdk-go/private/protocol/query",
 			"Comment": "v1.2.0",
 			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
@@ -129,12 +119,7 @@
 			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
 		},
 		{
-			"ImportPath": "github.com/aws/aws-sdk-go/service/ecs",
-			"Comment": "v1.2.0",
-			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
-		},
-		{
-			"ImportPath": "github.com/aws/aws-sdk-go/service/elb",
+			"ImportPath": "github.com/aws/aws-sdk-go/service/cloudformation",
 			"Comment": "v1.2.0",
 			"Rev": "b85eaebe3c12e8db01a7c26882457c5c51100471"
 		},
