@@ -36,7 +36,9 @@ func handleSettle(cf *cloudformation.CloudFormation, stackName string, timeout, 
 
 		sort.Sort(stackEvents(r.StackEvents))
 
-		for _, e := range r.StackEvents {
+		for i := range r.StackEvents {
+			e := r.StackEvents[i]
+
 			if e.Timestamp.Before(firstTime) {
 				continue
 			}
